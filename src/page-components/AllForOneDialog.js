@@ -9,11 +9,13 @@ import QueryDetails from "./support/QueryDetails";
 import AddSubscription from "./subscription/AddSubscription";
 import SubscriptionDetails from "./subscription/SubscriptionDetails";
 import AddEditMenuCategory from "./menu-categories/AddEditMenuCategory";
+import AddEditTable from "./tables/AddEditTable";
+import AddEditMenuItem from "./menu-items/AddEditMenuItem";
 
-const AllForOneDialog = ({open,setOpen,componentName,data,setData,each,index,setEach,setIndex,openDialog}) =>{
+const AllForOneDialog = ({open, setOpen, componentName, data, setData, each, index, setEach, setIndex, openDialog}) => {
 
-    const selectAComonent = () =>{
-        switch (componentName){
+    const selectAComonent = () => {
+        switch (componentName) {
             case 'menu-category':
                 return <AddEditMenuCategory
                     open={open}
@@ -25,8 +27,8 @@ const AllForOneDialog = ({open,setOpen,componentName,data,setData,each,index,set
                     setEach={setEach}
                     setIndex={setIndex}
                 />;
-            case 'family-member':
-                return <AddEditFmember
+            case 'table':
+                return <AddEditTable
                     open={open}
                     setOpen={setOpen}
                     data={data}
@@ -36,8 +38,8 @@ const AllForOneDialog = ({open,setOpen,componentName,data,setData,each,index,set
                     setEach={setEach}
                     setIndex={setIndex}
                 />;
-            case 'requests' :
-                return <AddEditRequests
+            case 'menu-item' :
+                return <AddEditMenuItem
                     open={open}
                     setOpen={setOpen}
                     data={data}
@@ -58,7 +60,7 @@ const AllForOneDialog = ({open,setOpen,componentName,data,setData,each,index,set
                     setEach={setEach}
                     setIndex={setIndex}
                 />;
-                case 'Transaction':
+            case 'Transaction':
                 return <TransactionDetails
                     open={open}
                     setOpen={setOpen}
@@ -118,9 +120,13 @@ const AllForOneDialog = ({open,setOpen,componentName,data,setData,each,index,set
                 />
         }
     };
-    return(
+    return (
         <>
-            <Dialog onClose={() =>{setOpen(false);setEach('');setIndex('');}} open={open} maxWidth={'xs'} fullWidth>
+            <Dialog onClose={() => {
+                setOpen(false);
+                if (setEach) setEach('');
+                if (setIndex) setIndex('');
+            }} open={open} maxWidth={'xs'} fullWidth>
                 <DialogContent>
                     {selectAComonent()}
                 </DialogContent>

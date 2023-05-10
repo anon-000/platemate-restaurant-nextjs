@@ -17,7 +17,6 @@ import {
 import InfiniteScroll from "react-infinite-scroller";
 import AllForOneDialog from "../../src/page-components/AllForOneDialog";
 import EmptyText from "../../src/components/common/EmptyText/EmptyText";
-import MenuItemRow from "../../src/page-components/menu-items/MenuItemRow";
 import OrderRow from "../../src/page-components/orders/OrderRow";
 
 const Index = () => {
@@ -39,7 +38,6 @@ const Index = () => {
                 createdAt: -1,
             },
             $skip: allServices.length,
-            $limit: 3
         }
         if (search !== '') {
             data = {
@@ -48,7 +46,7 @@ const Index = () => {
         }
         OrderService.find({
             query: {
-                ...data
+                $populate: "orderedItems.menuItem",
             },
         })
             .then((response) => {
@@ -102,13 +100,13 @@ const Index = () => {
                             ),
                         }}
                     />
-                    {
-                        <Button color='primary' variant='contained' onClick={() => {
-                            setOpen(true);
-                            setEach('');
-                            setIndex('');
-                        }}>ADD MENU ITEM</Button>
-                    }
+                    {/*{*/}
+                    {/*    <Button color='primary' variant='contained' onClick={() => {*/}
+                    {/*        setOpen(true);*/}
+                    {/*        setEach('');*/}
+                    {/*        setIndex('');*/}
+                    {/*    }}>ADD MENU ITEM</Button>*/}
+                    {/*}*/}
 
                 </Box>
 
@@ -123,32 +121,32 @@ const Index = () => {
                             textAlign: 'center'
                         }}
                     >
-                        <Box sx={{
-                            backgroundColor: '#E6E6E6',
-                            padding: "16px 24px",
-                            borderRadius: "12px",
+                        {/*<Box sx={{*/}
+                        {/*    backgroundColor: '#E6E6E6',*/}
+                        {/*    padding: "16px 24px",*/}
+                        {/*    borderRadius: "12px",*/}
 
-                        }}>
-                            <Grid container>
-                                <Grid item xs={1}>
-                                    <Typography variant='body2' color={'#403D26'}
-                                                fontWeight={600}>{'Sl no.'}</Typography>
-                                </Grid>
-                                <Grid item xs={4}>
-                                    <Typography variant='body2' color={'#403D26'}
-                                                fontWeight={600}>{'Name'}</Typography>
-                                </Grid>
-                                <Grid item xs={5}>
-                                    <Typography variant='body2' color={'#403D26'}
-                                                fontWeight={600}>{'Description'}</Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <Typography variant='body2' color={'#403D26'}
-                                                fontWeight={600}>{'Status'}</Typography>
-                                </Grid>
+                        {/*}}>*/}
+                        {/*    <Grid container>*/}
+                        {/*        <Grid item xs={1}>*/}
+                        {/*            <Typography variant='body2' color={'#403D26'}*/}
+                        {/*                        fontWeight={600}>{'Sl no.'}</Typography>*/}
+                        {/*        </Grid>*/}
+                        {/*        <Grid item xs={4}>*/}
+                        {/*            <Typography variant='body2' color={'#403D26'}*/}
+                        {/*                        fontWeight={600}>{'Name'}</Typography>*/}
+                        {/*        </Grid>*/}
+                        {/*        <Grid item xs={5}>*/}
+                        {/*            <Typography variant='body2' color={'#403D26'}*/}
+                        {/*                        fontWeight={600}>{'Description'}</Typography>*/}
+                        {/*        </Grid>*/}
+                        {/*        <Grid item xs={2}>*/}
+                        {/*            <Typography variant='body2' color={'#403D26'}*/}
+                        {/*                        fontWeight={600}>{'Status'}</Typography>*/}
+                        {/*        </Grid>*/}
 
-                            </Grid>
-                        </Box>
+                        {/*    </Grid>*/}
+                        {/*</Box>*/}
                         <InfiniteScroll
                             hasMore={hasMore}
                             loadMore={loadData}

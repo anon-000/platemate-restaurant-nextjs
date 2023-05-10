@@ -245,6 +245,7 @@ export default function CustomDrawer({children}) {
                                     <ListItemIcon
                                         sx={{
                                             minWidth: 0,
+                                            mt: 0.5,
                                             mr: open ? 3 : 'auto',
                                             color: Router.pathname === each.href ? 'primary.main' : 'inherit',
                                             justifyContent: 'center',

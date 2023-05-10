@@ -180,7 +180,7 @@ const Index = () => {
             <AllForOneDialog
                 open={open}
                 setOpen={setOpen}
-                componentName={'service'}
+                componentName={'menu-category'}
                 data={allServices}
                 setData={setAllServices}
                 index={index}

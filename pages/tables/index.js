@@ -179,7 +179,7 @@ const Index = () => {
             <AllForOneDialog
                 open={open}
                 setOpen={setOpen}
-                componentName={'service'}
+                componentName={'table'}
                 data={allServices}
                 setData={setAllServices}
                 index={index}

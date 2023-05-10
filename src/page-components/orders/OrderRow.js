@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import {Box, Grid, Switch, Typography} from "@mui/material";
+import {Box, Grid, MenuItem, Select, Switch, Typography} from "@mui/material";
 import {styled} from "@mui/styles";
-import {MenuCategoryService, MenuItemService} from "../../apis/rest.app";
+import {MenuCategoryService, MenuItemService, OrderService} from "../../apis/rest.app";
 import {useSnackbar} from "notistack";
 import {useUser} from "../../store/UserContext";
 
@@ -47,6 +47,7 @@ const AntSwitch = styled(Switch)(({theme}) => ({
     },
 }));
 
+
 const OrderRow = ({each, index, setAllServices, allServices, setIndex, setEach, setOpen}) => {
     const {enqueueSnackbar} = useSnackbar();
 
@@ -54,12 +55,18 @@ const OrderRow = ({each, index, setAllServices, allServices, setIndex, setEach, 
 
     const [user, setUser] = useUser();
 
-    const handleChange = () => {
+    const [status, setStatus] = useState(each.status - 1);
+
+
+    const statusList = ["PLACED", "IN_MAKING", "COOKED", "COMPLETED"]
+
+
+    const handleChange = (value) => {
 
         console.log(each?._id)
         setStatusLoading(true);
-        MenuItemService.patch(each?._id, {
-            "status": each?.status === 1 ? 2 : 1,
+        OrderService.patch(each?._id, {
+            "status": value + 1,
         })
             .then((res) => {
                 setStatusLoading(false);
@@ -81,49 +88,48 @@ const OrderRow = ({each, index, setAllServices, allServices, setIndex, setEach, 
                 textAlign: 'center',
             }}>
                 <Grid container>
-                    <Grid item xs={0.5}>
-                        <Typography variant='body2'>{index + 1}</Typography>
+                    <Grid item xs={2}>
+                        <img height={120} width={130} alt={''} src={each?.orderedItems[0].menuItem.avatar}/>
+                    </Grid>
+                    <Grid item xs={6} display={'flex'} flexDirection={'column'} justifyContent={'left'}
+                          alignItems={"start"}>
+                        <Typography variant='body1'>{each.orderedItems.length == 1
+                            ? each?.orderedItems[0].menuItem.name
+                            : `${each.orderedItems[0].menuItem.name} & ${(each.orderedItems.length - 1)} more`}</Typography>
+                        <Typography mt={1} variant='body2'
+                                    sx={{wordBreak: 'break-all'}}>{`Order Id : ${each.bookingId}`}</Typography>
+                        <Typography mt={1} variant='body1'
+                                    sx={{wordBreak: 'break-all'}}>{`Rs. ${each.price.finalPrice} ${each.status}`}</Typography>
                     </Grid>
                     <Grid item xs={4}>
-                        <Typography variant='body2'>{each?.name}</Typography>
-                    </Grid>
-                    <Grid item xs={5}>
-                        <Typography variant='body2' sx={{wordBreak: 'break-all'}}>{each?.description}</Typography>
-                    </Grid>
-                    <Grid item xs={2}>
                         <Box display={'flex'} alignItems={'center'} ml={6} justifyContent={'center'}>
-                            <Typography sx={each?.status === 1 ? {color: 'primary.main'} : {color: '#D14747'}}>
-                                {each?.status === 1 ? 'Active' : 'DeActive'}
-                            </Typography>
-                            {
-                                <AntSwitch
-                                    disabled={statusLoading}
-                                    checked={each?.status === 1}
-                                    inputProps={{
-                                        'aria-label': 'ant design'
-                                    }}
-                                    sx={{ml: 1}}
-                                    onChange={() => {
-                                        handleChange();
-                                    }}
-                                />
-                            }
-
+                            <Select
+                                value={status}
+                                onChange={(e) => handleChange(e.target.value)}
+                                displayEmpty
+                                inputProps={{'aria-label': 'Without label'}}
+                            >
+                                {
+                                    statusList?.filter((v, ix) => ix + 1 >= each.status).map((e, i) => {
+                                        return <MenuItem value={i}>{e}</MenuItem>
+                                    })
+                                }
+                            </Select>
                         </Box>
                     </Grid>
-                    {
-                        <Grid item xs={0.5}>
-                            <img
-                                src={'/images/icons/Edit-icon.svg'}
-                                alt={'Image'}
-                                style={{cursor: 'pointer'}}
-                                onClick={() => {
-                                    setIndex(index);
-                                    setEach(each);
-                                    setOpen(true);
-                                }}/>
-                        </Grid>
-                    }
+                    {/*{*/}
+                    {/*    <Grid item xs={0.5}>*/}
+                    {/*        <img*/}
+                    {/*            src={'/images/icons/Edit-icon.svg'}*/}
+                    {/*            alt={'Image'}*/}
+                    {/*            style={{cursor: 'pointer'}}*/}
+                    {/*            onClick={() => {*/}
+                    {/*                setIndex(index);*/}
+                    {/*                setEach(each);*/}
+                    {/*                setOpen(true);*/}
+                    {/*            }}/>*/}
+                    {/*    </Grid>*/}
+                    {/*}*/}
                 </Grid>
             </Box>
         </>

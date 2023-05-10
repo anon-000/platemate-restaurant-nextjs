@@ -50,13 +50,13 @@ const Index = () => {
         gradient.addColorStop(1, 'rgba(180, 210, 255, 1)');
 
         return {
-            labels: dashboardData?.serviceRequestGraphStatistics?.map((each) => each?.value),
+            labels: dashboardData?.orderGraphStatistics?.map((each) => each?.value),
             datasets: [
                 {
                     fill: true,
                     borderColor: '#2851BA',
                     // label:'# of votes',
-                    data: dashboardData?.serviceRequestGraphStatistics?.map((each) => each?.totalRequests),
+                    data: dashboardData?.orderGraphStatistics?.map((each) => each?.totalRequests),
                     backgroundColor: gradient,
                     pointRadius: 3,
                     pointBackgroundColor: '#2851BA',
@@ -74,13 +74,13 @@ const Index = () => {
         gradient.addColorStop(1, 'rgba(180, 210, 255, 1)');
 
         return {
-            labels: dashboardData?.transactionsGraphStatistics?.map((each) => each?.value),
+            labels: dashboardData?.transactionGraphStatistics?.map((each) => each?.value),
             datasets: [
                 {
                     fill: true,
                     borderColor: '#2851BA',
                     // label:'# of votes',
-                    data: dashboardData?.transactionsGraphStatistics?.map((each) => each?.totalTransaction),
+                    data: dashboardData?.transactionGraphStatistics?.map((each) => each?.totalTransaction),
                     backgroundColor: gradient,
                     pointRadius: 3,
                     pointBackgroundColor: '#2851BA',
@@ -93,22 +93,22 @@ const Index = () => {
         {
             img:'/images/icons/pending_request.svg',
             title:'Pending Orders',
-            value:dashboardData?.totalPendingRequests,
+            value:dashboardData?.totalPendingOrders,
             href:'/orders?filterType=Pending'
         },{
             img:'/images/icons/complete_requests.svg',
             title:'Completed Orders',
-            value:dashboardData?.totalCompletedRequests,
+            value:dashboardData?.totalCompletedOrders,
             href:'/orders?filterType=Completed'
         },{
-            img:'/images/icons/total_users.svg',
+            img:'/images/icons/menu_2.svg',
             title:'Menu Items',
-            value:dashboardData?.totalFamilyMembers,
+            value:dashboardData?.totalMenuItems,
             href:'/menu-items'
         },{
-            img:'/images/icons/transaction_worth.svg',
+            img:'/images/icons/money.svg',
             title:'Transaction worth',
-            value:dashboardData?.totalTransactionWorth,
+            value:dashboardData?.totalTransaction,
             href:'/'
         },
     ]
@@ -136,7 +136,7 @@ const Index = () => {
                                             sx={{cursor:'pointer'}}
                                         >
                                             <img src={e?.img} alt={'Image'}/>
-                                            <Typography sx={{mt:1,color:i === 0 ?'#F5993D':'#508CD2'}}>
+                                            <Typography sx={{mt:1,color:i === 0 ?'#F57C3D':'#F57C3D'}}>
                                                 {e?.title}
                                             </Typography>
                                             <Typography sx={{mt:1.5}}>

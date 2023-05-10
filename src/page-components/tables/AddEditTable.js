@@ -1,30 +1,28 @@
 import React, {useEffect, useState} from "react";
 import {Box, Button, CircularProgress, TextField, Typography} from "@mui/material";
-import {MenuCategoryService} from "../../apis/rest.app";
+import {MenuCategoryService, TableService} from "../../apis/rest.app";
 import {useSnackbar} from "notistack";
 
 const AddEditTable = ({each, index, setOpen, setData, data, openDialog}) => {
-    const [type, setType] = useState('');
-    const [description, setDescription] = useState('');
+    const [tableNumber, setTableNumber] = useState('');
+    const [seatCount, setSeatCount] = useState('');
     const [loading, setLoading] = useState(false);
     const {enqueueSnackbar} = useSnackbar();
     const [feePercentage, setFeePercentage] = useState('');
 
     useEffect(() => {
         if (each) {
-            setType(each?.name);
-            setDescription(each?.description);
-            setFeePercentage(each?.feePercentage);
+            setTableNumber(each?.tableNumber);
+            setSeatCount(each?.seatsCount);
         }
     }, [each]);
 
     const handleSubmit = async () => {
         if (each) {
             setLoading(true);
-            await MenuCategoryService.patch(each?.id, {
-                "name": type,
-                "description": description,
-                "avatar": "",
+            await TableService.patch(each?.id, {
+                "tableNumber": parseInt(tableNumber),
+                "seatsCount": parseInt(seatCount)
             })
                 .then(async (res) => {
                     setData(([...datum]) => {
@@ -39,15 +37,14 @@ const AddEditTable = ({each, index, setOpen, setData, data, openDialog}) => {
                 });
         } else {
             setLoading(true);
-            await MenuCategoryService.create({
-                "name": type,
-                "description": description,
-                "avatar": "",
+            await TableService.create({
+                "tableNumber": parseInt(tableNumber),
+                "seatsCount": parseInt(seatCount)
             })
                 .then(async (res) => {
                     setLoading(false);
                     setData([res, ...data]);
-                    enqueueSnackbar('Menu category added successfully', {variant: 'success'});
+                    enqueueSnackbar('Table added successfully', {variant: 'success'});
                     setOpen(false);
                 }).catch((error) => {
                     enqueueSnackbar(error.message ? error.message : 'Something went wrong', {variant: 'error'});
@@ -60,34 +57,34 @@ const AddEditTable = ({each, index, setOpen, setData, data, openDialog}) => {
         <>
             <Box display={'flex'} justifyContent={'space-between'} width={'100%'} mb={2}>
                 <Typography sx={{fontWeight: 600}}>
-                    {each ? 'Edit service type' : 'Add new service type'}
+                    {each ? 'Edit Table' : 'Add Table'}
                 </Typography>
                 <img src={'/images/icons/cross_icon.svg'} alt={'Image'} style={{cursor: 'pointer'}}
-                     onClick={openDialog}/>
+                     onClick={()=> setOpen(false)}/>
             </Box>
             <Box display={'flex'} flexDirection={'column'} width={'100%'}>
                 <Typography>
-                    {'Title'}
+                    {'Table number'}
                 </Typography>
                 <TextField
                     size={'small'}
                     color={'primary'}
                     fullWidth
-                    onChange={(event) => setType(event.target.value)}
-                    value={type}
+                    onChange={(event) => setTableNumber(event.target.value)}
+                    value={tableNumber}
                     variant="outlined"
                 />
             </Box>
             <Box display={'flex'} flexDirection={'column'} width={'100%'} mt={1.5}>
                 <Typography sx={{mb: 0.5}}>
-                    {'Description'}
+                    {'Seats count'}
                 </Typography>
                 <TextField
                     size={'small'}
                     color={'primary'}
                     fullWidth
-                    onChange={(event) => setDescription(event.target.value)}
-                    value={description}
+                    onChange={(event) => setSeatCount(event.target.value)}
+                    value={seatCount}
                     variant="outlined"
                     multiline
                     rows={4}
@@ -112,7 +109,7 @@ const AddEditTable = ({each, index, setOpen, setData, data, openDialog}) => {
                 <Button
                     fullWidth
                     color="primary"
-                    disabled={loading || type === '' || description === ''}
+                    disabled={loading || tableNumber === '' || seatCount === ''}
                     variant={'contained'}
                     onClick={handleSubmit}
                 >
