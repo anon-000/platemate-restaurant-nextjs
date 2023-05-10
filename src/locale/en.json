@@ -1,0 +1,281 @@
+{
+    "viewAll": "View All",
+    "Total Students": "Total Students Enrolled per Course",
+    "defaultPageTitle": "A-Plus Admin",
+    "menu": "Menu",
+    "mainKey": {
+        "enter": "Enter",
+        "successful": "successful",
+        "email": "Email",
+        "password": "Password",
+        "phone": "Phone",
+        "name": "Name",
+        "address": "Address",
+        "city": "City",
+        "state": "State",
+        "pinCode": "Pin code"
+    },
+    "common": {
+        "confirm": {
+            "yes": "Yes",
+            "cancel": "Cancel",
+            "default": "Are you sure?",
+            "delete": "Are you sure to delete?"
+        }
+    },
+    "attendance": {
+        "dialogTitle": "Take Attendance",
+        "button-cancel": "Cancel",
+        "dialogButton": "Submit Attendance",
+        "unSelectAll": "Unselect All",
+        "selectAll": "Select All",
+        "no_student": "No students Found",
+        "takeAttendance": "Attendance taken successfully"
+    },
+    "student": {
+        "allStudents": "All students",
+        "search_student": "Search student by name",
+        "view_profile": "View profile",
+        "accept": "Accept",
+        "reject": "Reject"
+    },
+    "autocomplete": {
+        "institute": {
+            "label": "Institute",
+            "placeholder": "Start typing to see suggestions"
+        },
+        "course": {
+            "label": "Course",
+            "placeholder": "Start typing to see suggestions"
+        },
+        "specialization": {
+            "label": "Specialization",
+            "placeholder": "Start typing to see suggestions"
+        },
+        "semester": {
+            "label": "Semester",
+            "placeholder": "Start typing to see suggestions"
+        },
+        "unit": {
+            "label": "Unit",
+            "placeholder": "Start typing to see suggestions"
+        },
+        "chapter": {
+            "label": "Chapter",
+            "placeholder": "Start typing to see suggestions"
+        },
+        "subject": {
+            "label": "Subject",
+            "placeholder": "Start typing to see suggestions"
+        }
+    },
+    "error": {
+        "500": "Something went wrong!",
+        "aValid": "a valid",
+        "isRequired": "is required"
+    },
+    "logout": {
+        "title": "Are you Sure?",
+        "message": "Do you really want to Logout ?"
+    },
+    "coverText": {
+        "title": {
+            "complete": "Complete",
+            "eLearningPortal": "E-learning Portal"
+        },
+        "subTitle": {
+            "onlineVideo": "Online video lectures",
+            "onlineClass": "Online live classes",
+            "onlineNotes": "Online notes & materials",
+            "onlineExams": "Online exams",
+            "onlineAttendance": "Online attendance system"
+        }
+    },
+    "edit": "Edit",
+    "delete": "Delete",
+    "done": "Done",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "view": "View",
+    "nameLabel": "Name",
+    "specialization": {
+        "title": "All Specialization",
+        "addButton": "Create Specialization",
+        "searchPlaceholder": "search Specialization",
+        "form": {
+            "validate": {
+                "name": "Please Provide Specialization Name",
+                "shortName": "Please Provide Short Name"
+            },
+            "confirm": {
+                "delete": "Are you sure to delete?"
+            }
+        },
+        "success": {
+            "editedSuccess": "Edited Successfully",
+            "deletedSuccessfully": "Deleted Successfully"
+        }
+    },
+    "tableHeading": {
+        "serialNumber": "Sl No.",
+        "name": "Name",
+        "shortName": "Short Name",
+        "course": "Course",
+        "specialization": "Specialization",
+        "specializations": "Specializations",
+        "status": "Status",
+        "institute" : "Franchise",
+        "institutes" : "Franchises",
+        "syllabus": "Syllabus",
+        "subject": "Subject",
+        "semester": "Semester",
+        "logo": "Logo",
+        "units": "Units",
+        "unit": "Unit",
+        "chapters": "Chapters",
+        "chapter": "Chapter",
+        "topics": "Topics",
+        "topic": "Topic",
+        "publishYear": "Publish Year",
+        "noCourses": "No courses found",
+        "noSubjects": "No Subjects Found",
+        "noSemesters": "No Semesters Found",
+        "noSpecializations": "No Specializations Found",
+        "noSyllabuses": "No Syllabuses Found",
+        "noUnits": "No Units Found",
+        "noChapters": "No Chapters Found",
+        "noTopics": "No Topics Found"
+    },
+    "snackbarMessages": {
+        "somethingWentWrong": "Something went wrong",
+        "createCourseSuccess": "Course created successfully",
+        "createSubjectSuccess": "Subject Created Successfully",
+        "createSemesterSuccess": "Semester Created Successfully",
+        "createSyllabusSuccess": "Syllabus Created Successfully",
+        "createUnitSuccess": "Unit Created Successfully",
+        "createChapterSuccess": "Chapter Created Successfully",
+        "createTopicSuccess": "Topic Created Successfully",
+        "createSpecializationSuccess": "Specialization Created Successfully",
+        "createdSuccess": "Created successfully"
+    },
+    "instituteOnBoarding": {
+        "basicDetails": {
+            "title": "Sign Up",
+            "description": "Please enter following details to continue",
+            "form": {
+                "label": {
+                    "instituteName": "Institute name",
+                    "instituteEmail": "Institute email",
+                    "institutePhone": "Institute phone",
+                    "website": "Website",
+                    "address": "Address",
+                    "city": "City",
+                    "state": "State",
+                    "pinCode": "Pin code"
+                },
+                "button": {
+                    "next": "Next"
+                },
+                "error": {
+                    "validEmail": "Enter a valid email ID",
+                    "validPhone": "Enter a valid phone number",
+                    "validPinCode": "Enter a valid pin code"
+                },
+                "success": {
+                    "detailsAdded": "Basic Details added Successfully"
+                }
+            }
+        },
+        "courseDetails": {
+            "title": "Courses",
+            "description": "Choose courses for the institute",
+            "button": {
+                "next": "Next",
+                "back": "Back"
+            },
+            "success": {
+                "courseAdded": "Courses added successfully"
+            },
+            "error": {
+                "courseRequired": "Please select at least one course"
+            },
+            "form": {
+                "search": "Search courses"
+            }
+        },
+        "designDetails": {
+            "title": "Look & feel",
+            "description": "Manage look & feel",
+            "upload": "Click or drag to upload your logo",
+            "selectTheme": "Select a theme",
+
+            "button": {
+                "next": "Create",
+                "back": "Back"
+            },
+            "cropper": {
+                "save": "Save",
+                "cancel": "Cancel",
+                "uploadPhoto": "Upload Photo",
+                "clickHere": "Click to Choose File",
+                "or": "or",
+                "dropHere": "Drag & Drop File here"
+            },
+            "error": {
+                "imageRequired": "Image is required"
+            },
+            "success": {
+                "instituteCreated": "Institute created Successfully"
+            }
+        }
+    },
+    "teacherOnBoarding": {
+        "basicDetails": {
+            "title": "Let us know about you",
+            "form": {
+                "label": {
+                    "name": "Your Name",
+                    "phone": "Contact no.",
+                    "website": "Website",
+                    "address": "Your Address",
+                    "city": "City",
+                    "state": "State",
+                    "pinCode": "Pin code"
+                },
+                "button": {
+                    "next": "Next"
+                },
+                "error": {
+                    "validPhone": "Enter a valid phone number",
+                    "validPinCode": "Enter a valid pin code"
+                },
+                "success": {
+                    "detailsAdded": "Basic Details added Successfully"
+                }
+            }
+        },
+        "courseDetails": {
+            "title": "Choose courses you teach",
+            "button": {
+                "next": "Next",
+                "back": "Back"
+            }
+        },
+        "subjectDetails": {
+            "title": "Choose subjects you teach",
+            "button": {
+                "next": "Submit",
+                "back": "Back"
+            }
+        }
+    },
+    "transactions": {
+        "title": "All Transactions",
+        "noInstitution": "No Transactions found .",
+        "oops": "Oops !",
+        "createdBy": "Students Name",
+        "price": "Price",
+        "institution": "Institution",
+        "slno": "Sl. No"
+    }
+}

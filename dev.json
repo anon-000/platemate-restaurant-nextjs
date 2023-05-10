@@ -1,0 +1,10 @@
+{
+    "apps" : [
+        {
+            "name"      : "kutumbakam_user_dev",
+            "script"    : "yarn start -p 4000",
+            "interpreter": "none",
+            "args": "serve -p 8443 -T"
+        }
+    ]
+}

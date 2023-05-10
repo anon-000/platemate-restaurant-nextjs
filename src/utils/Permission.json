@@ -1,0 +1,18 @@
+[
+    {
+        "metaName": "admin_login",
+        "pathname": "/login"
+    },
+    {
+        "metaName": "admin_dashboard",
+        "pathname": "/"
+    },
+    {
+        "metaName": "admin_store",
+        "pathname": "/store"
+    },
+    {
+        "metaName": "admin_admin",
+        "pathname": "/admin"
+    }
+]
