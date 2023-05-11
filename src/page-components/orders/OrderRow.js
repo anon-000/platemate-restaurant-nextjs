@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Box, Grid, MenuItem, Select, Switch, Typography} from "@mui/material";
+import {Box, CircularProgress, Grid, MenuItem, Select, Switch, Typography} from "@mui/material";
 import {styled} from "@mui/styles";
 import {MenuCategoryService, MenuItemService, OrderService} from "../../apis/rest.app";
 import {useSnackbar} from "notistack";
@@ -48,6 +48,16 @@ const AntSwitch = styled(Switch)(({theme}) => ({
 }));
 
 
+// export enum OrderStatus {
+//     INITIATED = 0,
+//     PLACED = 1,
+//     IN_MAKING = 2,
+//     COOKED = 3,
+//     COMPLETED = 4,
+//     CANCELLED = 6,
+// }
+
+
 const OrderRow = ({each, index, setAllServices, allServices, setIndex, setEach, setOpen}) => {
     const {enqueueSnackbar} = useSnackbar();
 
@@ -58,20 +68,22 @@ const OrderRow = ({each, index, setAllServices, allServices, setIndex, setEach, 
     const [status, setStatus] = useState(each.status - 1);
 
 
-    const statusList = ["PLACED", "IN_MAKING", "COOKED", "COMPLETED"]
+    const statusList = ["PLACED", "IN MAKING", "COOKED", "COMPLETED", "CANCELLED"]
+
 
 
     const handleChange = (value) => {
 
-        console.log(each?._id)
+        setStatus(value)
         setStatusLoading(true);
         OrderService.patch(each?._id, {
             "status": value + 1,
         })
             .then((res) => {
+
                 setStatusLoading(false);
                 setAllServices(([...member]) => {
-                    member[index] = res;
+                    member[index].status = value + 1;
                     return member;
                 });
             }).catch((error) => {
@@ -99,22 +111,28 @@ const OrderRow = ({each, index, setAllServices, allServices, setIndex, setEach, 
                         <Typography mt={1} variant='body2'
                                     sx={{wordBreak: 'break-all'}}>{`Order Id : ${each.bookingId}`}</Typography>
                         <Typography mt={1} variant='body1'
-                                    sx={{wordBreak: 'break-all'}}>{`Rs. ${each.price.finalPrice} ${each.status}`}</Typography>
+                                    sx={{wordBreak: 'break-all'}}>{`Rs. ${each.price.finalPrice}`}</Typography>
                     </Grid>
                     <Grid item xs={4}>
                         <Box display={'flex'} alignItems={'center'} ml={6} justifyContent={'center'}>
-                            <Select
-                                value={status}
-                                onChange={(e) => handleChange(e.target.value)}
-                                displayEmpty
-                                inputProps={{'aria-label': 'Without label'}}
-                            >
-                                {
-                                    statusList?.filter((v, ix) => ix + 1 >= each.status).map((e, i) => {
-                                        return <MenuItem value={i}>{e}</MenuItem>
-                                    })
-                                }
-                            </Select>
+                            {
+
+                                statusLoading ? <CircularProgress />:
+                                each.status === 6 ? <Typography mt={1} variant='body2' color={'red'}
+                                                                sx={{wordBreak: 'break-all'}}>{`Cancelled`}</Typography> :
+                                    <Select
+                                        value={status}
+                                        onChange={(e) => handleChange(e.target.value)}
+                                        displayEmpty
+                                        inputProps={{'aria-label': 'Without label'}}
+                                    >
+                                        {
+                                            statusList?.map((e, i) => {
+                                                return <MenuItem value={i}>{e}</MenuItem>
+                                            })
+                                        }
+                                    </Select>
+                            }
                         </Box>
                     </Grid>
                     {/*{*/}

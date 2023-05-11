@@ -47,19 +47,19 @@ const Index = () => {
         //1. Using gradient background.
         let gradient = ctx.createLinearGradient(50, 210, 55, 100);
         gradient.addColorStop(0, 'rgba(180, 201, 255, 0)');
-        gradient.addColorStop(1, 'rgba(180, 210, 255, 1)');
+        gradient.addColorStop(1, '#F57C3D60');
 
         return {
             labels: dashboardData?.orderGraphStatistics?.map((each) => each?.value),
             datasets: [
                 {
                     fill: true,
-                    borderColor: '#2851BA',
+                    borderColor: '#F57C3D',
                     // label:'# of votes',
                     data: dashboardData?.orderGraphStatistics?.map((each) => each?.totalRequests),
                     backgroundColor: gradient,
                     pointRadius: 3,
-                    pointBackgroundColor: '#2851BA',
+                    pointBackgroundColor: '#F57C3D',
                 },
             ],
         };
@@ -71,19 +71,19 @@ const Index = () => {
         //1. Using gradient background.
         let gradient = ctx.createLinearGradient(50, 210, 55, 100);
         gradient.addColorStop(0, 'rgba(180, 201, 255, 0)');
-        gradient.addColorStop(1, 'rgba(180, 210, 255, 1)');
+        gradient.addColorStop(1, '#F57C3D60');
 
         return {
             labels: dashboardData?.transactionGraphStatistics?.map((each) => each?.value),
             datasets: [
                 {
                     fill: true,
-                    borderColor: '#2851BA',
+                    borderColor: '#F57C3D',
                     // label:'# of votes',
                     data: dashboardData?.transactionGraphStatistics?.map((each) => each?.totalTransaction),
                     backgroundColor: gradient,
                     pointRadius: 3,
-                    pointBackgroundColor: '#2851BA',
+                    pointBackgroundColor: '#F57C3D',
                 },
             ],
         };

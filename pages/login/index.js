@@ -124,7 +124,7 @@ const Login = () => {
                         }} src={'/images/logo.svg'} />
                     </Box>
                     <Typography sx={{fontWeight:500,fontSize:'20px'}}>
-                        Login
+                        Partner Login
                     </Typography>
                     <Box mt={1} />
                     <Typography variant="body2">

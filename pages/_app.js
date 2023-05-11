@@ -92,7 +92,7 @@ export default function MyApp(props) {
         <CacheProvider value={emotionCache}>
             {/*<CustomThemeProvider value={setTheme}>*/}
                 <Head>
-                    <title>{'Platemate'}</title>
+                    <title>{'Platemate Partner'}</title>
                     <meta name="viewport" content="initial-scale=1, width=device-width" />
                 </Head>
                 <UserProvider value={[user,setUser]}>

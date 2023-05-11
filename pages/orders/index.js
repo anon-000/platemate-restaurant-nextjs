@@ -46,6 +46,7 @@ const Index = () => {
         }
         OrderService.find({
             query: {
+                "status[$in]": [1,2,3,4,6],
                 $populate: "orderedItems.menuItem",
             },
         })
