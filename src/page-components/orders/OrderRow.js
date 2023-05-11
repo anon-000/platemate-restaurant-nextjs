@@ -71,7 +71,6 @@ const OrderRow = ({each, index, setAllServices, allServices, setIndex, setEach, 
     const statusList = ["PLACED", "IN MAKING", "COOKED", "COMPLETED", "CANCELLED"]
 
 
-
     const handleChange = (value) => {
 
         setStatus(value)
@@ -112,26 +111,28 @@ const OrderRow = ({each, index, setAllServices, allServices, setIndex, setEach, 
                                     sx={{wordBreak: 'break-all'}}>{`Order Id : ${each.bookingId}`}</Typography>
                         <Typography mt={1} variant='body1'
                                     sx={{wordBreak: 'break-all'}}>{`Rs. ${each.price.finalPrice}`}</Typography>
+                        <Typography mt={1} variant='body1'
+                                    sx={{wordBreak: 'break-all'}}>{`Table number : ${each.table.tableNumber}`}</Typography>
                     </Grid>
                     <Grid item xs={4}>
                         <Box display={'flex'} alignItems={'center'} ml={6} justifyContent={'center'}>
                             {
 
-                                statusLoading ? <CircularProgress />:
-                                each.status === 6 ? <Typography mt={1} variant='body2' color={'red'}
-                                                                sx={{wordBreak: 'break-all'}}>{`Cancelled`}</Typography> :
-                                    <Select
-                                        value={status}
-                                        onChange={(e) => handleChange(e.target.value)}
-                                        displayEmpty
-                                        inputProps={{'aria-label': 'Without label'}}
-                                    >
-                                        {
-                                            statusList?.map((e, i) => {
-                                                return <MenuItem value={i}>{e}</MenuItem>
-                                            })
-                                        }
-                                    </Select>
+                                statusLoading ? <CircularProgress/> :
+                                    each.status === 6 ? <Typography mt={1} variant='body2' color={'red'}
+                                                                    sx={{wordBreak: 'break-all'}}>{`Cancelled`}</Typography> :
+                                        <Select
+                                            value={status}
+                                            onChange={(e) => handleChange(e.target.value)}
+                                            displayEmpty
+                                            inputProps={{'aria-label': 'Without label'}}
+                                        >
+                                            {
+                                                statusList?.map((e, i) => {
+                                                    return <MenuItem value={i}>{e}</MenuItem>
+                                                })
+                                            }
+                                        </Select>
                             }
                         </Box>
                     </Grid>
